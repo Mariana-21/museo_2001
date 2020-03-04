@@ -24,4 +24,12 @@ class Curator
     end
     result
   end
+
+  def artists_with_multiple_photographs
+    photographs_by_artist.map do |artists, photos|
+      if photos.count > 1
+        artists.name
+      end
+    end.compact
+  end
 end
