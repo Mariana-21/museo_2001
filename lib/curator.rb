@@ -5,7 +5,7 @@ class Curator
     @artists = []
   end
 
-  def add(photo)
+  def add_photograph(photo)
     @photographs << photo
   end
 
@@ -15,5 +15,13 @@ class Curator
 
   def find_artist_by_id(id)
     @artists.find {|artist| artist.id == id}
+  end
+
+  def photographs_by_artist
+    result = {}
+    @artists.each do |artist|
+      result[artist] = @photographs.find_all {|photo| photo.artist_id == artist.id}
+    end
+    result
   end
 end
